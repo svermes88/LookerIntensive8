@@ -20,7 +20,7 @@ explore: d_supplier {}
 
 explore: f_lineitems {
   label: "Order Analysis"
-  view_label: "Orderitems"
+  view_label: "Order items"
   join: d_part {
     view_label: "Parts"
     type: left_outer
