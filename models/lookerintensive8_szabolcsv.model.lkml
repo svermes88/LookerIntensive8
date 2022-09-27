@@ -50,6 +50,8 @@ explore: f_lineitems {
 
   #Questions to clarify
   #1. primary key definition to discuss
-  #2. git repo do discuss
+  #2. git repo do discuss - DONE
   #3.  fact table has multiple date columns and the homework did not specify which one to use, how to decide which one is the right one?
   #4. the homework said many to many relationship. will looker able to use many to many just like that?
+  #5. How do I do data discovery? e.g. how do I know what data accbal col includes?
+  #6. #in the model do we need to keep these d tables ?
