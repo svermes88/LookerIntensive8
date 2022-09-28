@@ -149,20 +149,21 @@ view: f_lineitems {
     type: count
     drill_fields: []
   }
-  measure:  TotalSalesPrice {
-    label: "Total Sales Price"
+  measure:  TotalSalePrice {
+    label: "Total Sale Price"
     type: sum
-    sql: ${l_extendedprice} ;;
+    sql: ${l_quantity} ;;
     value_format_name: usd
+    #I found the total sale price KPI name a little misleading. based on the high-level defitinion I decided to assume to sum the quanitity. Let`s dioscuss`
   }
-  measure:  AverageSalesPrice {
-    label: "Average Sales Price"
+  measure:  AverageSalePrice {
+    label: "Average Sale Price"
     type: average
     sql: ${l_extendedprice} ;;
     value_format_name: usd
   }
-  measure:  CummulativeSales {
-    label: "Cummulative Sales"
+  measure:  CummulativeTotalSales {
+    label: "Cummulative Total Sales"
     type: running_total
     sql: ${l_extendedprice}*${l_quantity} ;;
     value_format_name: usd
