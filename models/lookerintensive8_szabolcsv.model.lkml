@@ -43,7 +43,7 @@ explore: f_lineitems {
     view_label: "Date"
     type: left_outer
     sql_on: ${f_lineitems.l_shipdatekey}=${d_dates.datekey};;
-    relationship: many_to_many
+    relationship: many_to_one
     }
 }
 

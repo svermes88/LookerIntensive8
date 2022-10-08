@@ -152,20 +152,93 @@ view: f_lineitems {
   measure:  TotalSalePrice {
     label: "Total Sale Price"
     type: sum
-    sql: ${l_quantity} ;;
+    sql: ${l_totalprice} ;;
     value_format_name: usd
-    #I found the total sale price KPI name a little misleading. based on the high-level defitinion I decided to assume to sum the quanitity. Let`s dioscuss`
-  }
+    }
   measure:  AverageSalePrice {
     label: "Average Sale Price"
     type: average
-    sql: ${l_extendedprice} ;;
+    sql: ${l_totalprice} ;;
     value_format_name: usd
   }
   measure:  CummulativeTotalSales {
     label: "Cummulative Total Sales"
     type: running_total
-    sql: ${l_extendedprice}*${l_quantity} ;;
+    sql: ${TotalSalePrice} ;;
     value_format_name: usd
   }
+  measure:  TotalSalePriceShippedByAir {
+    label: "Total Sale Price Shipped By Air"
+    type: sum
+    sql: ${TotalSalePrice} ;;
+    value_format_name: usd
+    filters: [l_shipmode: "AIR"]
+  }
+  measure:  TotalRussiaSales {
+    label: "Total Russia Sales"
+    type: sum
+    sql: ${TotalSalePrice} ;;
+    value_format_name: usd
+    filters: [d_customer.c_nation: "RUSSIA"]
+  }
+  measure:  TotalGrossRevenue {
+    label: "Total Gross Revenue"
+    type: sum
+    sql: ${TotalSalePrice} ;;
+    value_format_name: usd
+    filters: [l_orderstatus: "F"] #General quesiton on filteration. How do I do data discovery to identify which field and which values to use for filteration?
+
+  }
+  measure:  TotalCost {
+    label: "Total Cost"
+    type: sum
+    sql: ${l_supplycost} ;;
+    value_format_name: usd
+  }
+  measure:  TotalGrossMargin {
+    label: "Total Gross Margin"
+    type: number
+    sql: ${TotalGrossRevenue} - ${TotalCost} ;;
+    value_format_name: usd
+  }
+  measure:  TotalGrossMarginPercentage {
+    label: "Total Gross Margin %"
+    type: number
+    sql: ${TotalGrossMargin} / ${TotalGrossRevenue} ;;
+    value_format_name: percent_2
+  }
+  dimension: is_returned {
+    type: yesno
+    label: "Item returned"
+    description: "Items was returned or not (y/n)"
+    sql: ${l_returnflag}= 'R' ;;
+    hidden: no
+  }
+  measure:  ItemsReturned {
+    label: "Number of returned items"
+    type: sum
+    sql: ${is_returned} ;;
+    filters: [is_returned: "yes"]
+    value_format_name:  decimal_0
+  }
+
+  measure:  ItemsSold {
+    label: "Number of items sold"
+    type: sum
+    sql: ${l_quantity} ;;
+    value_format_name:  decimal_0
+  }
+  measure:  ItemsReturnedPercentage {
+    label: "Total Items Returned %"
+    type: number
+    sql: ${ItemsReturned} / ${ItemsSold}  ;;
+    value_format_name: percent_2
+  }
+  measure:  Customercount {
+    label: "Distinct count of custmers"
+    type: count_distinct
+    sql: ${l_custkey};;
+    value_format_name: decimal_0
+  }
+
 }

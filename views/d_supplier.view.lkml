@@ -49,4 +49,12 @@ view: d_supplier {
     type: count
     drill_fields: [s_name]
   }
+
+  dimension:  SuppliersByAccountBalance  {
+    label: "Suppliers by Account Balance"
+    type: tier
+    style: integer
+    tiers: [1, 3001,5001,7001]
+    sql: ${s_acctbal} ;;
+  }
 }
