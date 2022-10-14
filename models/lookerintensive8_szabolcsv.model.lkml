@@ -10,13 +10,13 @@ datagroup: lookerintensive8_szabolcsv_default_datagroup {
 
 persist_with: lookerintensive8_szabolcsv_default_datagroup
 
-explore: d_customer {}
+#explore: d_customer {}
 
-explore: d_dates {}
+#explore: d_dates {}
 
-explore: d_part {}
+#explore: d_part {}
 
-explore: d_supplier {}
+#explore: d_supplier {}
 
 explore: f_lineitems {
   label: "Order Analysis"
