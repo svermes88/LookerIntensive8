@@ -204,7 +204,7 @@ view: f_lineitems {
   measure:  TotalGrossMarginPercentage {
     label: "Total Gross Margin %"
     type: number
-    sql: ${TotalGrossMargin} / NULLIF(${TotalGrossRevenue},0) ;;
+    sql: ${TotalGrossMargin} / ${TotalGrossRevenue} ;;
     value_format_name: percent_2
   }
   dimension: is_returned {
