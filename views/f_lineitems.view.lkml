@@ -164,27 +164,27 @@ view: f_lineitems {
   measure:  CummulativeTotalSales {
     label: "Cummulative Total Sales"
     type: running_total
-    sql: ${TotalSalePrice} ;;
+    sql: ${l_totalprice} ;;
     value_format_name: usd
   }
   measure:  TotalSalePriceShippedByAir {
     label: "Total Sale Price Shipped By Air"
     type: sum
-    sql: ${TotalSalePrice} ;;
+    sql: ${l_totalprice} ;;
     value_format_name: usd
     filters: [l_shipmode: "AIR"]
   }
   measure:  TotalRussiaSales {
     label: "Total Russia Sales"
     type: sum
-    sql: ${TotalSalePrice} ;;
+    sql: ${l_totalprice} ;;
     value_format_name: usd
     filters: [d_customer.c_nation: "RUSSIA"]
   }
   measure:  TotalGrossRevenue {
     label: "Total Gross Revenue"
     type: sum
-    sql: ${TotalSalePrice} ;;
+    sql: ${l_totalprice} ;;
     value_format_name: usd
     filters: [l_orderstatus: "F"] #General quesiton on filteration. How do I do data discovery to identify which field and which values to use for filteration?
 
