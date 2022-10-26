@@ -11,7 +11,7 @@ view: d_customer {
   dimension: c_custkey {
     type: number
     sql: ${TABLE}."C_CUSTKEY" ;;
-    hidden: yes
+    #hidden: yes
     primary_key:  yes
   }
 
