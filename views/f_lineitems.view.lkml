@@ -186,9 +186,10 @@ view: f_lineitems {
     type: sum
     sql: ${l_totalprice} ;;
     value_format_name: usd
-    filters: [l_orderstatus: "F"] #General quesiton on filteration. How do I do data discovery to identify which field and which values to use for filteration?
+    filters: [l_orderstatus: "F"]
 
   }
+
   measure:  TotalCost {
     label: "Total Cost"
     type: sum
@@ -217,7 +218,7 @@ view: f_lineitems {
   measure:  ItemsReturned {
     label: "Number of returned items"
     type: sum
-    sql: ${is_returned} ;;
+    sql: ${l_quantity} ;;
     filters: [is_returned: "yes"]
     value_format_name:  decimal_0
   }
