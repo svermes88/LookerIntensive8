@@ -110,6 +110,7 @@ view: f_lineitems {
     type: string
     label: "Shipping mode"
     sql: ${TABLE}."L_SHIPMODE" ;;
+    drill_fields: [d_supplier.acc_bal_tier, d_supplier.s_region, TotalGrossMargin]
   }
 
   dimension: l_shippriority {
