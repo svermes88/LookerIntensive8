@@ -36,7 +36,7 @@ explore: f_lineitems {
   join: d_customer {
     view_label: "Customer"
     type: left_outer
-    sql_on: (${f_lineitems.l_custkey}=${d_customer.c_custkey};;
+    sql_on: ${f_lineitems.l_custkey}=${d_customer.c_custkey};;
     #foreign_key: d_customer.c_custkey
     relationship: many_to_one
   }
