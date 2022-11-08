@@ -18,6 +18,11 @@ view: d_supplier {
     type: string
     label: "Supplier Name"
     sql: ${TABLE}."S_NAME" ;;
+    drill_fields: [f_lineitems.l_linenumber]
+    link: {
+      label: "{{value}}"
+      url: "https://www.google.com/search?q={{ value | url_code }}"
+    }
   }
 
   dimension: s_nation {
